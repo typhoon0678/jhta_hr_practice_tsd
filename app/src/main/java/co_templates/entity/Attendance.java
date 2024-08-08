@@ -9,6 +9,13 @@ public class Attendance {
     private String date;
     private String statusFK;
 
+    public Attendance(String attendancePK, String employeeFK, String date, String statusFK) {
+        this.attendancePK = attendancePK;
+        this.employeeFK = employeeFK;
+        this.date = date;
+        this.statusFK = statusFK;
+    }
+
     public String getAttendancePK() {
         return attendancePK;
     }
@@ -39,5 +46,14 @@ public class Attendance {
 
     public void setStatusFK(String statusFK) {
         this.statusFK = statusFK;
+    }
+
+    public static String getStatusCode(String status) {
+        return switch (status) {
+            case "출근" -> "STATUS_01";
+            case "휴가" -> "STATUS_02";
+            case "퇴근" -> "STATUS_03";
+            default -> null;
+        };
     }
 }
