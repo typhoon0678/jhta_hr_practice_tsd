@@ -1,12 +1,11 @@
 package co_templates.repository;
 
 import co_templates.entity.Attendance;
+import co_templates.dto.EmpDailyRecordsDto;
 import co_templates.jdbc.ConnectionFactory;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 // 근태 관리 레포지토리
@@ -70,10 +69,54 @@ public class AttendanceRepository {
         return null;
     }
 
-    // get List<근태> by employeeId, departmentId
-    public List<Attendance> getAttendanceByEmployeeIdAndDepartmentId(int employeeId, int departmentId) {
 
-        return null;
+
+    public List<EmpDailyRecordsDto> getEmpDailyRecord() {
+        String sql = "SELECT " +
+                "    a.DATE, " +
+                "    e.EMPLOYEE_PK, " +
+                "    e.EMP_NAME, " +
+                "    ed.DEPARTMENT_PK, " +
+                "    a.STATUS_PK " +
+                "FROM " +
+                "    ATTENDANCE a " +
+                "JOIN " +
+                "    EMPLOYEE e ON a.EMPLOYEE_PK = e.EMPLOYEE_PK " +
+                "JOIN " +
+                "    EMP_DEP ed ON e.EMPLOYEE_PK = ed.EMPLOYEE_PK " +
+                "JOIN " +
+                "    DEPARTMENT d ON ed.DEPARTMENT_PK = d.DEPARTMENT_PK " +
+                "WHERE " +
+                "    a.DATE IS NOT NULL " +
+                "ORDER BY " +
+                "    a.DATE, e.EMPLOYEE_PK";
+
+        List<EmpDailyRecordsDto> records = new ArrayList<>();
+        try {
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next()) {
+                EmpDailyRecordsDto record = new EmpDailyRecordsDto(
+                        rs.getString("DATE"),
+                        rs.getString("EMPLOYEE_PK"),
+                        rs.getString("EMP_NAME"),
+                        rs.getString("DEPARTMENT_PK"),
+                        rs.getString("STATUS_PK")
+                );
+                records.add(record);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        for (EmpDailyRecordsDto record : records) {
+            System.out.println("Date: " + record.getDate());
+            System.out.println("Employee ID: " + record.getEmployeeId());
+            System.out.println("Employee Name: " + record.getEmpName());
+            System.out.println("Department ID: " + record.getDepartmentId());
+            System.out.println("Status ID: " + record.getStatusId());
+            System.out.println("-----------------------------");
+        }
+        return records;
     }
 
 }
