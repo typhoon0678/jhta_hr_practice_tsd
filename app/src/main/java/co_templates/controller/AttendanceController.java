@@ -84,9 +84,9 @@ public class AttendanceController {
 
     // 근태 삭제 Controller
     public void deleteAttendance() {
-        String id = hrView.deleteAttendance();
+        Attendance deleteAttendance = hrView.deleteAttendance();
 
-        boolean result = attendanceRepository.deleteAttendance(id);
+        boolean result = attendanceRepository.deleteAttendance(deleteAttendance);
 
         hrView.printResult(result);
     }

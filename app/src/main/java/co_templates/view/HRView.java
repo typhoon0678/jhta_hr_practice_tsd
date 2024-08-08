@@ -62,7 +62,7 @@ public class HRView {
 
     // ==== 근태 수정 ====
     public Attendance updateAttendance() {
-        System.out.print("변경할 근무자 ID 입력 : ");
+        System.out.print("\n변경할 근무자 ID 입력 [EX: emp_01]: ");
         String id = scanner.nextLine();
 
         System.out.print("변경할 근무 날짜 입력 (YYYY-MM-DD): [EX: 2024-08-01] : ");
@@ -75,10 +75,14 @@ public class HRView {
     }
 
     // ==== 근태 삭제 ====
-    public String deleteAttendance() {
-        System.out.print("삭제 할 근태 ID를 입력해주세요 : ");
+    public Attendance deleteAttendance() {
+        System.out.print("\n삭제할 근무자 ID 입력 [EX: emp_01] : ");
+        String id = scanner.nextLine();
 
-        return scanner.nextLine();
+        System.out.print("변경할 근무 날짜 입력 (YYYY-MM-DD): [EX: 2024-08-01] : ");
+        String date = scanner.nextLine();
+
+        return new Attendance(null, id, date, null);
     }
 
     // ==== 직원별 월별 근태 현황 ==== (선택사항)
