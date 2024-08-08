@@ -6,12 +6,12 @@ public class AttendanceByDepartmentDto {
 
     // variable
     // 직원 ID, 이름, 출근, 결근, 휴가
-    private final String id;
-    private final String name;
-    private final int workDay; // 출근
-    private final int offDay; // 결근
-    private final int vacationDay; // 휴가
-    private final int attendanceRate;
+    private String id;
+    private String name;
+    private int workDay; // 출근
+    private int offDay; // 결근
+    private int vacationDay; // 휴가
+    private int attendanceRate;
 
     public AttendanceByDepartmentDto(String id, String name, int workDay, int offDay, int vacationDay) {
         this.id = id;
@@ -22,5 +22,51 @@ public class AttendanceByDepartmentDto {
         this.attendanceRate = (int) Math.round(workDay / 24.0);
     }
 
-    // getter, setter
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getWorkDay() {
+        return workDay;
+    }
+
+    public void setWorkDay(int workDay) {
+        this.workDay = workDay;
+    }
+
+    public int getOffDay() {
+        return offDay;
+    }
+
+    public void setOffDay(int offDay) {
+        this.offDay = offDay;
+    }
+
+    public int getVacationDay() {
+        return vacationDay;
+    }
+
+    public void setVacationDay(int vacationDay) {
+        this.vacationDay = vacationDay;
+    }
+
+    public int getAttendanceRate() {
+        return attendanceRate;
+    }
+
+    public void setAttendanceRate(int attendanceRate) {
+        this.attendanceRate = attendanceRate;
+    }
 }
