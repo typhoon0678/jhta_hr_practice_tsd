@@ -1,0 +1,6 @@
+
+-- 특정 EMP_PK의 값으로 근태 전체 조회
+SELECT *
+FROM ATTENDANCE
+WHERE EMPLOYEE_PK = 'emp_01'
+ORDER BY DATE;
