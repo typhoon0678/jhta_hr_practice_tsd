@@ -3,12 +3,21 @@
  */
 package co_templates;
 
+import co_templates.controller.AttendanceController;
+import co_templates.repository.AttendanceRepository;
+import co_templates.view.HRView;
+
+import java.sql.SQLException;
+
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        AttendanceRepository attendanceRepository = new AttendanceRepository();
+        HRView hrView = new HRView();
+
+        AttendanceController attendanceController
+                = new AttendanceController(attendanceRepository, hrView);
+
+        attendanceController.run();
     }
 }
