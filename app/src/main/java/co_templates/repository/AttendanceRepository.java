@@ -6,16 +6,19 @@ import co_templates.jdbc.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 // 근태 관리 레포지토리
 public class AttendanceRepository {
 
     private final Connection connection;
+    private final Statement stmt;
 
     public AttendanceRepository() {
         try {
             this.connection = ConnectionFactory.getConnection();
+            this.stmt = connection.createStatement();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -34,15 +37,31 @@ public class AttendanceRepository {
     }
 
     // update 근태 by id
-    public boolean updateAttendance(int id, Attendance attendance) {
+    public boolean updateAttendance(Attendance attendance) {
 
-        return false;
+        String sql = "UPDATE ATTENDANCE" +
+                " SET STATUS_PK = " + attendance.getStatusFK() +
+                " WHERE EMPLOYEE_PK = " + attendance.getEmployeeFK();
+        try {
+            stmt.executeUpdate(sql);
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
+
     }
 
     // delete 근태 by id
-    public boolean deleteAttendance(int id) {
+    public boolean deleteAttendance(String id) {
 
-        return false;
+        String sql = "DELETE FROM ATTENDANCE WHERE ATTENDANCE_PK = " + id;
+
+        try {
+            stmt.executeUpdate(sql);
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
     }
 
     // get List<근태> by employeeId, month (선택사항)

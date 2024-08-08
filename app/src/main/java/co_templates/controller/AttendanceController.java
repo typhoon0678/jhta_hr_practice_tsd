@@ -18,27 +18,77 @@ public class AttendanceController {
     // 프로그램 실행 (인적 자원 관리 시스템 Controller)
     public void run() {
 
-        // while 문으로 프로그램 실행 로직 작성
+        String menu = "";
 
-        // hrView.selectSystemOption()
-        // switch(menu) {
-        // case("3"):
-        // handleAttendance();
-        // break; ... }
+        // while 문으로 프로그램 실행 로직 작성
+        while (!menu.equals("0")) {
+
+            menu = hrView.selectSystemOption();
+
+            switch (menu) {
+                case "3":
+                    handleAttendance();
+                    break;
+                case "0":
+                    hrView.exit();
+                    break;
+                default:
+                    hrView.wrongInput();
+                    break;
+            }
+        }
     }
 
     // 근태 관리 Controller
     public void handleAttendance() {
 
-        // while 문으로 근태 관리 입력 관리
+        String input = "";
 
-        // hrView.selectAttendanceOption();
+        while (!input.equals("0")) {
+
+            input = hrView.selectAttendanceOption();
+
+            switch (input) {
+                case "2":
+                    updateAttendance();
+                    break;
+                case "3":
+                    deleteAttendance();
+                    break;
+                case "5":
+                    attendanceByDepartmentAndMonth();
+                    break;
+                case "0":
+                    break;
+                default:
+                    break;
+            }
+
+        }
     }
 
-    // 근태 입력 Controller
+    // 근태 입력 Controller (선택 사항)
     public void insertAttendance() {
 
         // attendanceRepository.addAttendance();
+    }
+
+    // 근태 수정 Controller
+    public void updateAttendance() {
+        Attendance updateAttendance = hrView.updateAttendance();
+
+        boolean result = attendanceRepository.updateAttendance(updateAttendance);
+
+        hrView.printResult(result);
+    }
+
+    // 근태 삭제 Controller
+    public void deleteAttendance() {
+        String id = hrView.deleteAttendance();
+
+        boolean result = attendanceRepository.deleteAttendance(id);
+
+        hrView.printResult(result);
     }
 
     // 직원별 월별 근태 현황 Controller (선택 사항)
