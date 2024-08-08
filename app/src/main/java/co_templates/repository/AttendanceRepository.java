@@ -27,7 +27,7 @@ public class AttendanceRepository {
         return null;
     }
 
-    // insert 근태
+    // insert 근태 (선택사항)
     public boolean addAttendance(Attendance attendance) {
 
         return false;
@@ -45,11 +45,16 @@ public class AttendanceRepository {
         return false;
     }
 
-    // get List<근태> by employeeId, departmentId
-    public List<Attendance> getAttendanceByEmployeeIdDepartment(int employeeId, int departmentId) {
+    // get List<근태> by employeeId, month (선택사항)
+    public List<Attendance> getAttendanceByEmployeeIdAndMonth(int employeeId, int month) {
 
         return null;
     }
 
+    // get List<근태> by employeeId, departmentId
+    public List<Attendance> getAttendanceByEmployeeIdAndDepartmentId(int employeeId, int departmentId) {
+
+        return null;
+    }
 
 }
