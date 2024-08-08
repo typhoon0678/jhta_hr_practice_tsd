@@ -50,9 +50,9 @@ public class Attendance {
 
     public static String getStatusCode(String status) {
         return switch (status) {
-            case "출근" -> "STATUS_01";
-            case "휴가" -> "STATUS_02";
-            case "퇴근" -> "STATUS_03";
+            case "출근" -> "status_01";
+            case "휴가" -> "status_02";
+            case "퇴근" -> "status_03";
             default -> null;
         };
     }

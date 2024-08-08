@@ -38,9 +38,10 @@ public class AttendanceRepository {
     // update 근태 by id
     public boolean updateAttendance(Attendance attendance) {
 
-        String sql = "UPDATE ATTENDANCE" +
-                " SET STATUS_PK = " + attendance.getStatusFK() +
-                " WHERE EMPLOYEE_PK = " + attendance.getEmployeeFK();
+        String sql = "UPDATE ATTENDANCE " +
+                "SET STATUS_PK = '" + attendance.getStatusFK() + "' " +
+                "WHERE EMPLOYEE_PK = '" + attendance.getEmployeeFK() + "' " +
+                "AND DATE = '" + attendance.getDate() + "' ";
         try {
             stmt.executeUpdate(sql);
             return true;
@@ -51,9 +52,11 @@ public class AttendanceRepository {
     }
 
     // delete 근태 by id
-    public boolean deleteAttendance(String id) {
+    public boolean deleteAttendance(Attendance attendance) {
 
-        String sql = "DELETE FROM ATTENDANCE WHERE ATTENDANCE_PK = " + id;
+        String sql = "DELETE FROM ATTENDANCE" +
+                " WHERE EMPLOYEE_PK = '" + attendance.getEmployeeFK() + "'" +
+                " AND DATE = '" + attendance.getDate() + "'";
 
         try {
             stmt.executeUpdate(sql);
