@@ -2,16 +2,26 @@ package co_templates.controller;
 
 import co_templates.dto.AttendanceInputDto;
 import co_templates.repository.AttendanceRepository;
+import co_templates.service.EmpDailyRecordsService;
+import co_templates.service.TestService;
 import co_templates.view.HRView;
 
 // 근태 관리 컨트롤러
 public class AttendanceController {
 
     private final AttendanceRepository attendanceRepository;
+    private final EmpDailyRecordsService empDailyRecordsService;
+    private final TestService testService;
     private final HRView hrView;
 
-    public AttendanceController(AttendanceRepository attendanceRepository, HRView hrView) {
+    public AttendanceController(
+            AttendanceRepository attendanceRepository,
+            EmpDailyRecordsService empDailyRecordsService,
+            TestService testService,
+            HRView hrView) {
         this.attendanceRepository = attendanceRepository;
+        this.empDailyRecordsService = empDailyRecordsService;
+        this.testService = testService;
         this.hrView = hrView;
     }
 
@@ -112,5 +122,10 @@ public class AttendanceController {
         // 부서 ID로 근태 LIST 검색
 
         // hrView로 출력
+    }
+
+    // Test 부서별 월별 근태 현황 Controller
+    public void testAttendance() {
+
     }
 }

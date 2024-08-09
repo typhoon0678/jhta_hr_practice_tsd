@@ -2,7 +2,7 @@ package co_templates.dto;
 
 
 // 부서별 월별 근태 DTO
-public class AttendanceByDepartmentDto {
+public class EmpAttByDepDto {
 
     // variable
     // 직원 ID, 이름, 출근, 결근, 휴가
@@ -13,7 +13,7 @@ public class AttendanceByDepartmentDto {
     private int vacationDay; // 휴가
     private int attendanceRate;
 
-    public AttendanceByDepartmentDto(String id, String name, int workDay, int offDay, int vacationDay) {
+    public EmpAttByDepDto(String id, String name, int workDay, int offDay, int vacationDay) {
         this.id = id;
         this.name = name;
         this.workDay = workDay;

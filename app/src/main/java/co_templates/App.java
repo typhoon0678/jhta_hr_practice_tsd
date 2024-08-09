@@ -5,6 +5,8 @@ package co_templates;
 
 import co_templates.controller.AttendanceController;
 import co_templates.repository.AttendanceRepository;
+import co_templates.service.EmpDailyRecordsService;
+import co_templates.service.TestService;
 import co_templates.view.HRView;
 
 import java.sql.SQLException;
@@ -13,11 +15,16 @@ public class App {
 
     public static void main(String[] args) {
         AttendanceRepository attendanceRepository = new AttendanceRepository();
+        EmpDailyRecordsService empDailyRecordsService = new EmpDailyRecordsService(attendanceRepository);
+        TestService testService = new TestService(attendanceRepository);
         HRView hrView = new HRView();
 
 
-        AttendanceController attendanceController
-                = new AttendanceController(attendanceRepository, hrView);
+        AttendanceController attendanceController = new AttendanceController(
+                attendanceRepository,
+                empDailyRecordsService,
+                testService,
+                hrView);
 
         attendanceController.run();
     }

@@ -16,9 +16,9 @@ public class HRView {
     public String selectSystemOption() {
 
         System.out.print("""
-                
+                                
                 ==== 인적 자원 관리 시스템 ====
-                
+                                
                 1. 조직/직무 관리
                 2. 인사행정
                 3. 근태 관리 *
@@ -30,7 +30,7 @@ public class HRView {
                 9. 핵심 인재 관리
                 10. 월별 종합 현황 보기
                 0. 종료 *
-                
+                                
                 선택하세요 :\s""");
 
         return scanner.nextLine();
@@ -40,16 +40,16 @@ public class HRView {
     public String selectAttendanceOption() {
 
         System.out.print("""
-                
+                                
                 ==== 근태 관리 ====
-                
+                                
                 1. 근태 입력 (option)
                 2. 근태 수정 *
                 3. 근태 삭제 *
                 4. 직원별 월별 근태 현황 보기 (option)
                 5. 부서별 월별 근태 현황 보기 *
                 0. 메인 메뉴로 돌아가기 *
-                
+                                
                 선택하세요:\s""");
 
         return scanner.nextLine();
@@ -87,7 +87,7 @@ public class HRView {
     }
 
     // ==== 직원별 월별 근태 현황 ==== (선택사항)
-    public void attendanceByEmployeeAndMonth(Employee employee, List<Attendance> attendanceList) {
+    public void attendanceByEmployeeAndMonth() {
 
 
     }
