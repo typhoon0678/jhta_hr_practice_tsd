@@ -6,6 +6,7 @@ package co_templates;
 import co_templates.controller.AttendanceController;
 import co_templates.repository.AttendanceRepository;
 import co_templates.service.EmpDailyRecordsService;
+import co_templates.service.ShinTestService;
 import co_templates.service.TestService;
 import co_templates.view.HRView;
 
@@ -20,6 +21,9 @@ public class App {
         HRView hrView = new HRView();
 
 
+        ShinTestService service =new ShinTestService();
+        service.ShowTest();
+
         AttendanceController attendanceController = new AttendanceController(
                 attendanceRepository,
                 empDailyRecordsService,
@@ -27,5 +31,8 @@ public class App {
                 hrView);
 
         attendanceController.run();
+
+
+
     }
 }
