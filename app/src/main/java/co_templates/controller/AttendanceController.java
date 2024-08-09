@@ -4,7 +4,7 @@ import co_templates.dto.AttByDepDto;
 import co_templates.dto.AttendanceInputDto;
 import co_templates.repository.AttendanceRepository;
 import co_templates.service.EmpDailyRecordsService;
-import co_templates.service.TestService;
+import co_templates.service.EmpQueryService;
 import co_templates.view.HRView;
 
 import java.util.List;
@@ -14,17 +14,17 @@ public class AttendanceController {
 
     private final AttendanceRepository attendanceRepository;
     private final EmpDailyRecordsService empDailyRecordsService;
-    private final TestService testService;
+    private final EmpQueryService empQueryService;
     private final HRView hrView;
 
     public AttendanceController(
             AttendanceRepository attendanceRepository,
             EmpDailyRecordsService empDailyRecordsService,
-            TestService testService,
+            EmpQueryService empQueryService,
             HRView hrView) {
         this.attendanceRepository = attendanceRepository;
         this.empDailyRecordsService = empDailyRecordsService;
-        this.testService = testService;
+        this.empQueryService = empQueryService;
         this.hrView = hrView;
     }
 
@@ -123,16 +123,12 @@ public class AttendanceController {
     // 부서별 월별 근태 현황 Controller
     public void attendanceByDepartmentAndMonth() {
 
-        // 부서 검색
-
-        // 부서 ID로 근태 LIST 검색
-
-        // hrView로 출력
+        empDailyRecordsService.getAttSummary();
     }
 
     // Test 부서별 월별 근태 현황 Controller
     public void testAttendance() {
-        List<AttByDepDto> attByDepDtoList = testService.getAttendanceByDep();
+        List<AttByDepDto> attByDepDtoList = empQueryService.getAttendanceByDep();
 
         hrView.testAttendanceByDepartmentAndMonth(attByDepDtoList);
     }

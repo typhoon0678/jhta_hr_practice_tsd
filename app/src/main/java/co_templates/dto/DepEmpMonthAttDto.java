@@ -75,6 +75,6 @@ public class DepEmpMonthAttDto {
     @Override
     public String toString() {
         return String.format("  직원 ID: %s, 이름: %s\n  - 년월: %s\n  - 출근: %d일, 퇴근: %d일, 휴가: %d일\n  - 출근 비율: %.2f%%",
-                 employeeId, employeeName, month, daysPresent, daysAbsent, daysOnLeave, getAbsentPercentage());
+                employeeId, employeeName, month, daysPresent, daysAbsent, daysOnLeave, getAbsentPercentage());
     }
 }
