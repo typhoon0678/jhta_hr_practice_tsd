@@ -15,6 +15,7 @@ public class App {
         AttendanceRepository attendanceRepository = new AttendanceRepository();
         HRView hrView = new HRView();
 
+
         AttendanceController attendanceController
                 = new AttendanceController(attendanceRepository, hrView);
 
