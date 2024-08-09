@@ -25,7 +25,7 @@ public class TestService {
 
         Map<String, Map<String, Map<String, List<EmpDailyRecordsDto>>>> empDailyRecordsMonthMap =
                 empDailyRecordsDtoList.stream().collect(
-                        Collectors.groupingBy(EmpDailyRecordsDto::getEmpName,
+                        Collectors.groupingBy(EmpDailyRecordsDto::getDepartmentId,
                                 Collectors.groupingBy(dto -> dto.getDate().substring(0, 7),
                                         Collectors.groupingBy(EmpDailyRecordsDto::getEmployeeId)
                                 )

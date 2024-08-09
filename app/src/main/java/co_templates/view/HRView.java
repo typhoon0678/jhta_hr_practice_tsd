@@ -1,7 +1,6 @@
 package co_templates.view;
 
-import co_templates.dto.AttByDepDto;
-import co_templates.dto.AttendanceInputDto;
+import co_templates.dto.*;
 import co_templates.entity.Attendance;
 import co_templates.entity.Employee;
 
@@ -102,8 +101,23 @@ public class HRView {
 
     // ==== 부서별 월별 근태 현황 (테스트) ====
     public void testAttendanceByDepartmentAndMonth(List<AttByDepDto> attByDepDtoList) {
+        System.out.println("==== 부서별 월별 근태 현황 ====");
+
         for (AttByDepDto attByDepDto : attByDepDtoList) {
-            System.out.println(attByDepDto.getName());
+            System.out.printf("\n\n부서ID: %s\n\n", attByDepDto.getName());
+
+            for (AttByMonthDto attByMonthDto : attByDepDto.getAttByMonthDtoList()) {
+                System.out.printf("%s년 %s월 근태 현황: \n", attByMonthDto.getYear(), attByMonthDto.getMonth());
+
+                for (EmpAttByMonthDto empAttByMonthDto : attByMonthDto.getEmpAttByMonthDtoList()) {
+                    System.out.printf("- 직원 ID : %s\n", empAttByMonthDto.getName());
+                    System.out.printf("  - 출근율 : %d%%\n", empAttByMonthDto.getWorkRate());
+                    System.out.printf("  - 출근 : %d일, 결근 : %d일, 휴가 : %d일\n",
+                            empAttByMonthDto.getWorkDay(),
+                            empAttByMonthDto.getAbsentDay(),
+                            empAttByMonthDto.getVacationDay());
+                }
+            }
         }
     }
 
