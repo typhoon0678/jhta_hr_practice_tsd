@@ -5,11 +5,11 @@ import java.util.List;
 public class AttByMonthDto {
 
     private String dateMonth;
-    private List<EmpAttByDepDto> empAttByDepDtoList;
+    private List<EmpAttByMonthDto> empAttByMonthDtoList;
 
-    public AttByMonthDto(String dateMonth, List<EmpAttByDepDto> empAttByDepDtoList) {
+    public AttByMonthDto(String dateMonth, List<EmpAttByMonthDto> empAttByMonthDtoList) {
         this.dateMonth = dateMonth;
-        this.empAttByDepDtoList = empAttByDepDtoList;
+        this.empAttByMonthDtoList = empAttByMonthDtoList;
     }
 
     public String getDateMonth() {
@@ -20,11 +20,11 @@ public class AttByMonthDto {
         this.dateMonth = dateMonth;
     }
 
-    public List<EmpAttByDepDto> getEmpAttByDepDtoList() {
-        return empAttByDepDtoList;
+    public List<EmpAttByMonthDto> getEmpAttByMonthDtoList() {
+        return empAttByMonthDtoList;
     }
 
-    public void setEmpAttByDepDtoList(List<EmpAttByDepDto> empAttByDepDtoList) {
-        this.empAttByDepDtoList = empAttByDepDtoList;
+    public void setEmpAttByMonthDtoList(List<EmpAttByMonthDto> empAttByMonthDtoList) {
+        this.empAttByMonthDtoList = empAttByMonthDtoList;
     }
 }

@@ -1,5 +1,6 @@
 package co_templates.view;
 
+import co_templates.dto.AttByDepDto;
 import co_templates.dto.AttendanceInputDto;
 import co_templates.entity.Attendance;
 import co_templates.entity.Employee;
@@ -48,6 +49,7 @@ public class HRView {
                 3. 근태 삭제 *
                 4. 직원별 월별 근태 현황 보기 (option)
                 5. 부서별 월별 근태 현황 보기 *
+                6. 부서별 월별 근태 현황 보기 (test)
                 0. 메인 메뉴로 돌아가기 *
                                 
                 선택하세요:\s""");
@@ -96,6 +98,13 @@ public class HRView {
     public void attendanceByDepartmentAndMonth() {
 
 
+    }
+
+    // ==== 부서별 월별 근태 현황 (테스트) ====
+    public void testAttendanceByDepartmentAndMonth(List<AttByDepDto> attByDepDtoList) {
+        for (AttByDepDto attByDepDto : attByDepDtoList) {
+            System.out.println(attByDepDto.getName());
+        }
     }
 
     public void exit() {

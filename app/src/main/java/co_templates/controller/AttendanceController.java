@@ -1,10 +1,13 @@
 package co_templates.controller;
 
+import co_templates.dto.AttByDepDto;
 import co_templates.dto.AttendanceInputDto;
 import co_templates.repository.AttendanceRepository;
 import co_templates.service.EmpDailyRecordsService;
 import co_templates.service.TestService;
 import co_templates.view.HRView;
+
+import java.util.List;
 
 // 근태 관리 컨트롤러
 public class AttendanceController {
@@ -71,6 +74,9 @@ public class AttendanceController {
                 case "5":
                     attendanceByDepartmentAndMonth();
                     break;
+                case "6":
+                    testAttendance();
+                    break;
                 case "1", "4":
                     hrView.inDevelopment();
                     break;
@@ -126,6 +132,8 @@ public class AttendanceController {
 
     // Test 부서별 월별 근태 현황 Controller
     public void testAttendance() {
+        List<AttByDepDto> attByDepDtoList = testService.getAttendanceByDep();
 
+        hrView.testAttendanceByDepartmentAndMonth(attByDepDtoList);
     }
 }
