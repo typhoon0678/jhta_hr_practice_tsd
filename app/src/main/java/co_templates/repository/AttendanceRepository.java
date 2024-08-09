@@ -110,14 +110,6 @@ public class AttendanceRepository {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        for (EmpDailyRecordsDto record : records) {
-            System.out.println("Date: " + record.getDate());
-            System.out.println("Employee ID: " + record.getEmployeeId());
-            System.out.println("Employee Name: " + record.getEmpName());
-            System.out.println("Department ID: " + record.getDepartmentId());
-            System.out.println("Status ID: " + record.getStatusId());
-            System.out.println("-----------------------------");
-        }
         return records;
     }
 
