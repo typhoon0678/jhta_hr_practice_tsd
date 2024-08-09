@@ -1,5 +1,6 @@
 package co_templates.repository;
 
+import co_templates.dto.AttendanceInputDto;
 import co_templates.entity.Attendance;
 import co_templates.dto.EmpDailyRecordsDto;
 import co_templates.jdbc.ConnectionFactory;
@@ -36,33 +37,31 @@ public class AttendanceRepository {
     }
 
     // update 근태 by id
-    public boolean updateAttendance(Attendance attendance) {
+    public boolean updateAttendance(AttendanceInputDto attendance) {
 
         String sql = "UPDATE ATTENDANCE " +
                 "SET STATUS_PK = '" + attendance.getStatusFK() + "' " +
                 "WHERE EMPLOYEE_PK = '" + attendance.getEmployeeFK() + "' " +
                 "AND DATE = '" + attendance.getDate() + "' ";
         try {
-            stmt.executeUpdate(sql);
-            return true;
+            return stmt.executeUpdate(sql) > 0;
         } catch (SQLException e) {
-            return false;
+            throw new RuntimeException(e);
         }
 
     }
 
     // delete 근태 by id
-    public boolean deleteAttendance(Attendance attendance) {
+    public boolean deleteAttendance(AttendanceInputDto attendance) {
 
         String sql = "DELETE FROM ATTENDANCE" +
                 " WHERE EMPLOYEE_PK = '" + attendance.getEmployeeFK() + "'" +
                 " AND DATE = '" + attendance.getDate() + "'";
 
         try {
-            stmt.executeUpdate(sql);
-            return true;
+            return stmt.executeUpdate(sql) > 0;
         } catch (SQLException e) {
-            return false;
+            throw new RuntimeException(e);
         }
     }
 

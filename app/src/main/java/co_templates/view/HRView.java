@@ -1,5 +1,6 @@
 package co_templates.view;
 
+import co_templates.dto.AttendanceInputDto;
 import co_templates.entity.Attendance;
 import co_templates.entity.Employee;
 
@@ -61,7 +62,7 @@ public class HRView {
     }
 
     // ==== 근태 수정 ====
-    public Attendance updateAttendance() {
+    public AttendanceInputDto updateAttendance() {
         System.out.print("\n변경할 근무자 ID 입력 [EX: emp_01]: ");
         String id = scanner.nextLine();
 
@@ -71,18 +72,18 @@ public class HRView {
         System.out.print("변경 할 근태 입력 (출근/퇴근/휴가 등): [EX: 출근] : ");
         String statusCode = Attendance.getStatusCode(scanner.nextLine());
 
-        return new Attendance(null, id, date, statusCode);
+        return new AttendanceInputDto(id, date, statusCode);
     }
 
     // ==== 근태 삭제 ====
-    public Attendance deleteAttendance() {
+    public AttendanceInputDto deleteAttendance() {
         System.out.print("\n삭제할 근무자 ID 입력 [EX: emp_01] : ");
         String id = scanner.nextLine();
 
-        System.out.print("변경할 근무 날짜 입력 (YYYY-MM-DD): [EX: 2024-08-01] : ");
+        System.out.print("삭제할 근무 날짜 입력 (YYYY-MM-DD): [EX: 2024-08-01] : ");
         String date = scanner.nextLine();
 
-        return new Attendance(null, id, date, null);
+        return new AttendanceInputDto(id, date);
     }
 
     // ==== 직원별 월별 근태 현황 ==== (선택사항)
@@ -101,11 +102,15 @@ public class HRView {
         System.out.println("프로그램을 종료합니다.");
     }
 
+    public void inDevelopment() {
+        System.out.println("개발중입니다.");
+    }
+
     public void wrongInput() {
         System.out.println("잘못된 입력입니다.");
     }
 
     public void printResult(boolean result) {
-        System.out.println((result) ? "적용되었습니다." : "오류가 발생했습니다. 다시 시도해주세요.");
+        System.out.println((result) ? "적용되었습니다." : "변경된 사항이 없습니다.");
     }
 }

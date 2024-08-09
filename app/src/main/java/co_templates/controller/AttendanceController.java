@@ -1,6 +1,6 @@
 package co_templates.controller;
 
-import co_templates.entity.Attendance;
+import co_templates.dto.AttendanceInputDto;
 import co_templates.repository.AttendanceRepository;
 import co_templates.view.HRView;
 
@@ -28,6 +28,9 @@ public class AttendanceController {
             switch (menu) {
                 case "3":
                     handleAttendance();
+                    break;
+                case "1", "2", "4", "5", "6", "7", "8", "9", "10":
+                    hrView.inDevelopment(); // 개발 중
                     break;
                 case "0":
                     hrView.exit();
@@ -58,9 +61,13 @@ public class AttendanceController {
                 case "5":
                     attendanceByDepartmentAndMonth();
                     break;
+                case "1", "4":
+                    hrView.inDevelopment();
+                    break;
                 case "0":
                     break;
                 default:
+                    hrView.wrongInput();
                     break;
             }
 
@@ -75,7 +82,7 @@ public class AttendanceController {
 
     // 근태 수정 Controller
     public void updateAttendance() {
-        Attendance updateAttendance = hrView.updateAttendance();
+        AttendanceInputDto updateAttendance = hrView.updateAttendance();
 
         boolean result = attendanceRepository.updateAttendance(updateAttendance);
 
@@ -84,7 +91,7 @@ public class AttendanceController {
 
     // 근태 삭제 Controller
     public void deleteAttendance() {
-        Attendance deleteAttendance = hrView.deleteAttendance();
+        AttendanceInputDto deleteAttendance = hrView.deleteAttendance();
 
         boolean result = attendanceRepository.deleteAttendance(deleteAttendance);
 
